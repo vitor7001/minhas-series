@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-const Generos = () =>{
+const Series = () =>{
     const [data, setData] = useState([])
   
     useEffect(() => {
-      axios.get('/api/genres')
+      axios.get('/api/series')
       .then(res => {
         setData(res.data.data)
       })
     }, [])
 
-const deleteGenero = id =>{
-    axios.delete('/api/genres/' + id)
+const deleteSerie = id =>{
+    axios.delete('/api/series/' + id)
     .then(resp => {
         const filtrado = data.filter(item => item.id !== id)
         setData(filtrado)
@@ -25,8 +25,8 @@ const deleteGenero = id =>{
             <th scope='row'>{record.id}</th>
                 <td>{record.name}</td>
                 <td>
-                     <button className='btn btn-danger' onClick={() => deleteGenero(record.id)}> Remover </button>
-                     <Link className='btn btn-warning' to={'/generos/' + record.id}>Editar</Link>
+                     <button className='btn btn-danger' onClick={() => deleteSerie(record.id)}> Remover </button>
+                     <Link className='btn btn-warning' to={'/series/' + record.id}>Editar</Link>
                  </td>
         </tr>
         )
@@ -36,20 +36,20 @@ const deleteGenero = id =>{
 if(data.length === 0 ){
     return(
         <div className='container'>
-            <h1>Genêros</h1>
-            <div className='alert  alert-warning' role='alert'>
-                    Você não possui Genêros criados!
-            </div>
-            <Link to='/generos/novo'  className='btn btn-primary'> Novo Genêro </Link>
+            <h1>Séries</h1>
 
+            <div className='alert  alert-warning' role='alert'>
+                    Você não possui Séries criadas!
+            </div>
+            <Link to='/series/novo'  className='btn btn-primary'> Nova Série </Link>
         </div>
     )
 }
 
     return (
         <div className='container'>
-                <h1> Genêros </h1>
-                    <Link to='/generos/novo'  className='btn btn-primary'> Novo Genêro </Link>
+                <h1> Séries </h1>
+                    <Link to='/series/novo'  className='btn btn-primary'> Nova Série </Link>
                 <table className='table  table-dark'>
                     <thead>
                         <tr>
@@ -68,4 +68,4 @@ if(data.length === 0 ){
     )
   }
 
-  export default Generos;
+  export default Series;

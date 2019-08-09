@@ -22,10 +22,16 @@ const toggle = () =>{
 
 return (
      <Navbar color='light' light expand='md'>
+       <div className='container'>
               <NavbarBrand tag={Link} to='/'> Minhas Séries </NavbarBrand>
               <NavbarToggler onClick={toggle}/>
                 <Collapse  isOpen={open} navbar>
                    <Nav className='ml-auto'>
+                      <NavItem>
+                        <NavLink tag={Link} to="/series">
+                          Séries
+                        </NavLink>
+                      </NavItem>
                       <NavItem>
                         <NavLink tag={Link} to="/generos">
                           Genêros
@@ -33,6 +39,7 @@ return (
                       </NavItem>
                    </Nav>
                 </Collapse>
+        </div>
      </Navbar>
   )
 }
