@@ -7,7 +7,9 @@ import {Badge} from 'reactstrap';
 const InfoSerie = ({match}) => {
 const [form, setForm] = useState({})
 const [sucess, setSucess] = useState(false)
-const [mode,setMode] = useState('INFO')
+const [mode,setMode] = useState('EDIT')
+const [genres, setGenres] = useState([])
+const [genreId, setGenreId] = useState('')
 
 const [data,  setData] = useState({})
 useEffect(() =>{
@@ -16,8 +18,23 @@ useEffect(() =>{
         setData(res.data)
         setForm(res.data)
     })
+
 }, [match.params.id])
 
+useEffect(() =>{
+    axios
+        .get('/api/genres')
+        .then(res => {
+            setGenres(res.data.data)
+            
+        const genres = res.data.data
+        const encontrado = genres.find(value => data.genre === value.name)
+
+        if(encontrado){
+            setGenreId(encontrado.id)
+        }
+        })
+}, [data])
 
 // custom header
 const masterHeader ={
@@ -36,9 +53,18 @@ const onChange = field => evt =>{
     })
 }
 
+const seleciona = value => () => {
+    setForm({
+        ...form,
+        status: value    
+    })
+}
+
+
 const save = () =>{
-        axios.post('/api/series', {
-            form
+        axios.put('/api/series/' + match.params.id,{
+            ...form,
+            genre_id: genreId
         })
         .then(resp => {
             setSucess(true)
@@ -65,9 +91,9 @@ if (sucess){
                                 {data.name}
                                 </h1>
                                 <div className='lead text-white'>
-                                <Badge color='success'> Assistido </Badge>
-                                <Badge color='warning'> Para Assistir </Badge>
-                                Genêro: {data.genre}
+                                {data.status ==='ASSISTIDO' &&  <Badge color='success'> Assistido </Badge>}
+                                {data.status ==='PARA_ASSISTIR' &&<Badge color='warning'> Para Assistir </Badge>} 
+                                 Genêro: {data.genre}
                                 </div>
 
                             
@@ -103,6 +129,35 @@ if (sucess){
                         <label htmlfor='name'>Comentários </label>
                         <input type='text' value={form.comments} onChange={onChange('comments')} className='form-control' id='name'  placeholder='Nome da série' />
                     </div>
+
+                    <div className='form-group'>
+                        <label htmlfor='name'>Genêro </label>
+                        <select className='form-control' onChange={onChange('genre_id')}>
+                           {genres.map(genre =>  <option key={genre.id}
+                           value={genre.id}select={genre.id === form.genre} >{genre.name}</option>)}
+                        </select>
+                    </div>
+
+
+
+                    <div className='form-check'>
+                        <input onClick={seleciona('ASSISTIDO')} className='form-check-input' 
+                        type='radio' name='status' id='assistido' value='ASSISTIDO' />
+                        <label className='form-check-label' htmlFor='assistido'>
+                            Assistido
+                        </label>
+                    </div>
+
+                    <div className='form-check'>
+                        <input onClick={seleciona('PARA_ASSISTIR')} className='form-check-input' 
+                        type='radio' name='status' id='paraAssistir' value='PARA_ASSISTIR' />
+                        <label className='form-check-label' htmlFor='paraAssistir'>
+                            Para Assistir
+                        </label>
+                    </div>
+
+
+                    
                 <button type='button' onClick={save} className='btn btn-primary'>Salvar</button>
                 </form>
 
