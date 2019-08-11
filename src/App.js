@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from './Header';
-import Generos from './Generos';
-import NovoGenero from './NovoGenero';
-import EditarGenero from './EditarGenero';
-import Series from './Series';
-import NovaSerie from './NovaSerie';
-import InfoSerie from './InfoSerie';
+import Generos from './generos/Generos';
+import NovoGenero from './generos/NovoGenero';
+import EditarGenero from './generos/EditarGenero';
+import Series from './series/Series';
+import NovaSerie from './series/NovaSerie';
+import InfoSerie from './series/InfoSerie';
 
 import {
   BrowserRouter as Router,
@@ -17,7 +17,6 @@ const Home = () =>{
   return <h1> Home </h1>
 }
 
-//node node_modules\minhas-series-server\index.js
 function App() {
 
 
