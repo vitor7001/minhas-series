@@ -5,9 +5,11 @@ import { Redirect } from 'react-router-dom';
 import {Badge} from 'reactstrap';
 
 const InfoSerie = ({match}) => {
-const [form, setForm] = useState({})
+const [form, setForm] = useState({
+    name: ''
+})
 const [sucess, setSucess] = useState(false)
-const [mode,setMode] = useState('EDIT')
+const [mode,setMode] = useState('INFO')
 const [genres, setGenres] = useState([])
 const [genreId, setGenreId] = useState('')
 
@@ -44,6 +46,10 @@ const masterHeader ={
     backgroundSize :'cover',
     backgroundPosition:'center',
     backgroundRepeat:'no-repeat'
+}
+
+const onChangeGenre = evt =>{
+    setGenreId(evt.target.value)
 }
 
 const onChange = field => evt =>{
@@ -104,7 +110,7 @@ if (sucess){
 
             </header>
 
-            <div>
+            <div className='container'>
                 <button className='btn btn-primary' onClick={() => setMode('EDIT')}>
                     Editar
                 </button>
@@ -114,43 +120,42 @@ if (sucess){
             
         mode === 'EDIT' &&  
             <div className='container'>
-                <h1>Nova Série</h1>
-                <prev>{JSON.stringify(form)}</prev>
+                <h1>Editar Série</h1>
                 <button className='btn btn-primary' onClick={() => setMode('INFO')}>
                     Cancelar Edição
                 </button>
                 <form>
                     <div className='form-group'>
-                        <label htmlfor='name'>Nome </label>
+                        <label htmlFor='name'>Nome </label>
                         <input type='text' value={form.name} onChange={onChange('name')} className='form-control' id='name'  placeholder='Nome da série' />
                     </div>
 
                     <div className='form-group'>
-                        <label htmlfor='name'>Comentários </label>
+                        <label htmlFor='name'>Comentários </label>
                         <input type='text' value={form.comments} onChange={onChange('comments')} className='form-control' id='name'  placeholder='Nome da série' />
                     </div>
 
                     <div className='form-group'>
-                        <label htmlfor='name'>Genêro </label>
-                        <select className='form-control' onChange={onChange('genre_id')}>
+                        <label htmlFor='name'>Genêro </label>
+                        <select className='form-control' onChange={onChangeGenre} value={genreId}>
                            {genres.map(genre =>  <option key={genre.id}
-                           value={genre.id}select={genre.id === form.genre} >{genre.name}</option>)}
+                           value={genre.id}>{genre.name}</option>)}
                         </select>
                     </div>
 
 
 
                     <div className='form-check'>
-                        <input onClick={seleciona('ASSISTIDO')} className='form-check-input' 
-                        type='radio' name='status' id='assistido' value='ASSISTIDO' />
+                        <input onChange={seleciona('ASSISTIDO')} className='form-check-input' 
+                        type='radio' checked={form.status === 'ASSISTIDO'} name='status' id='assistido' value='ASSISTIDO' />
                         <label className='form-check-label' htmlFor='assistido'>
                             Assistido
                         </label>
                     </div>
 
                     <div className='form-check'>
-                        <input onClick={seleciona('PARA_ASSISTIR')} className='form-check-input' 
-                        type='radio' name='status' id='paraAssistir' value='PARA_ASSISTIR' />
+                        <input onChange={seleciona('PARA_ASSISTIR')} className='form-check-input' 
+                        type='radio' checked={form.status === 'PARA_ASSISTIR'} name='status' id='paraAssistir' value='PARA_ASSISTIR' />
                         <label className='form-check-label' htmlFor='paraAssistir'>
                             Para Assistir
                         </label>
