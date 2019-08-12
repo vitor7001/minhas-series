@@ -13,6 +13,12 @@ const [mode,setMode] = useState('INFO')
 const [genres, setGenres] = useState([])
 const [genreId, setGenreId] = useState('')
 
+const styleBadge= {
+    fontSize: 17,
+    display : 'block',
+     width: '200px'
+}
+
 const [data,  setData] = useState({})
 useEffect(() =>{
     axios.get('/api/series/' + match.params.id)
@@ -97,9 +103,20 @@ if (sucess){
                                 {data.name}
                                 </h1>
                                 <div className='lead text-white'>
-                                {data.status ==='ASSISTIDO' &&  <Badge color='success'> Assistido </Badge>}
-                                {data.status ==='PARA_ASSISTIR' &&<Badge color='warning'> Para Assistir </Badge>} 
-                                 Genêro: {data.genre}
+                                {data.status ==='ASSISTIDO' &&  <Badge color='success' style={styleBadge}> Assistido! </Badge>}
+                                {data.status ==='PARA_ASSISTIR' &&<Badge color='warning' style={styleBadge}> Para Assistir! </Badge>} 
+                                {   
+                                    data.genre !== null &&
+                                    <Badge color='info' style={{fontSize: 17, width: '200px'}}>
+                                    Genêro:  {data.genre}
+                                    </Badge>
+                                }
+                                {
+                                    data.genre === null &&
+                                    <Badge color='danger' style={{fontSize: 17, width: '200px'}}>
+                                    SEM GENÊRO :/
+                                    </Badge>
+                                }
                                 </div>
 
                             
@@ -132,7 +149,7 @@ if (sucess){
 
                     <div className='form-group'>
                         <label htmlFor='name'>Comentários </label>
-                        <input type='text' value={form.comments} onChange={onChange('comments')} className='form-control' id='name'  placeholder='Nome da série' />
+                        <input type='text' value={form.comments} onChange={onChange('comments')} className='form-control' id='name'  placeholder='Comentários sobre o que achou sobre a série' />
                     </div>
 
                     <div className='form-group'>
