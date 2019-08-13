@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Alert } from 'reactstrap';
+
 const Generos = () =>{
     const [data, setData] = useState([])
   
     useEffect(() => {
       axios.get('/api/genres')
       .then(res => {
-        setData(res.data.data)
+       setData(res.data.data)
       })
     }, [])
 
@@ -19,37 +21,55 @@ const deleteGenero = id =>{
     })
 }
     
-    const renderizaLinha = record =>{
+const renderizaLinha = record =>{
         return(
         <tr key={record.id}>
             <th scope='row'>{record.id}</th>
                 <td>{record.name}</td>
                 <td>
-                     <button className='btn btn-danger' onClick={() => deleteGenero(record.id)}> Remover </button>
-                     <Link className='btn btn-warning' to={'/generos/' + record.id}>Editar</Link>
-                 </td>
+                    <Link className='btn btn-info' to={'/generos/' + record.id}>Editar</Link>
+                    <button className='btn btn-danger' onClick={() => deleteGenero(record.id)}> Remover </button>
+                </td>
         </tr>
         )
-    }
+}
+
+const [visible, setVisible] = useState(true)
+
+const onDismiss = () =>{
+    setVisible(false)
+}
+
+const alerta = (
+    <Alert color="info" isOpen={visible} toggle={onDismiss}>
+       <p>Aqui temos todos os genêros já cadastrados</p> 
+    </Alert>
+    )
+
+    const alertaNenhum = (
+        <Alert color="warning" isOpen={visible} toggle={onDismiss}>
+           <p>Seja o primeiro a cadastrar um genêro!</p> 
+        </Alert>
+        )
 
 
 if(data.length === 0 ){
     return(
         <div className='container'>
             <h1>Genêros</h1>
-            <div className='alert  alert-warning' role='alert'>
-                    Você não possui Genêros criados!
+            <div>{alertaNenhum}</div>
+            <div className='alert  alert-danger' role='alert'>
+                    Não possuimos Genêros cadastrados!
             </div>
-            <Link to='/generos/novo'  className='btn btn-primary'> Novo Genêro </Link>
-
+            <Link to='/generos/novo'  className='btn btn-danger'> Novo Genêro urgente! </Link>
         </div>
-    )
-}
-
+)}
     return (
         <div className='container'>
+            
                 <h1> Genêros </h1>
-                    <Link to='/generos/novo'  className='btn btn-primary'> Novo Genêro </Link>
+                <div>{alerta}</div>
+                <Link to='/generos/novo'  className='btn btn-primary'> Novo Genêro </Link>
                 <table className='table  table-dark'>
                     <thead>
                         <tr>

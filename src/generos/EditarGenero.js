@@ -5,12 +5,12 @@ import { Redirect } from 'react-router-dom';
 const EditarGenero = ({match}) => {
 const [name, setName] = useState('')
 const [sucess, setSucess] = useState(false)
-
+const [nomeAtual, setNomeAtual] = useState('')
 useEffect(()   => {
     axios
         .get('/api/genres/' + match.params.id)
         .then(resp =>{
-
+            setNomeAtual(resp.data.name)
         })
 }, [ match.params.id])
 
@@ -33,12 +33,13 @@ if (sucess)
 
     return(
         <div className='container'>
-            <h1>Editar Genêro</h1>
+            <h1>Editar Genêro  {nomeAtual}</h1>
 
                 <form>
                     <div className='form-group'>
                         <label htmlfor='name'>Nome </label>
-                        <input type='text' value={name} onChange={onChange} className='form-control' id='name'  placeholder='Nome do genêro' />
+                        <input type='text' value={name} onChange={onChange} 
+                        className='form-control' id='name'  placeholder={`Novo nome para o genêro ${nomeAtual}`} />
                     </div>
                     <button type='button' onClick={save} className='btn btn-primary'>Salvar</button>
                 </form>

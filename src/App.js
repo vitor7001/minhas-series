@@ -7,8 +7,8 @@ import Series from './series/Series';
 import NovaSerie from './series/NovaSerie';
 import InfoSerie from './series/InfoSerie';
 
-
-import { Jumbotron, Container } from 'reactstrap';
+//{/*, Container, Button */}Para o Jumbotron
+import { Jumbotron} from 'reactstrap';
 
 import {
   BrowserRouter as Router,

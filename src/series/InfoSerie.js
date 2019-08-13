@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-
 import {Badge} from 'reactstrap';
 
 const InfoSerie = ({match}) => {
@@ -83,6 +82,7 @@ const save = () =>{
         })
 }
 
+
 if (sucess){
     return <Redirect to='/series' />
 }
@@ -127,18 +127,23 @@ if (sucess){
 
             </header>
 
-            <div className='container'>
+
+
+           {
+               mode === 'INFO' &&
+               <div className='container'>
                 <button className='btn btn-primary' onClick={() => setMode('EDIT')}>
                     Editar
                 </button>
             </div>
+        }
 
         {
             
         mode === 'EDIT' &&  
             <div className='container'>
                 <h1>Editar Série</h1>
-                <button className='btn btn-primary' onClick={() => setMode('INFO')}>
+                <button className='btn btn-danger' onClick={() => setMode('INFO')}>
                     Cancelar Edição
                 </button>
                 <form>
@@ -155,7 +160,8 @@ if (sucess){
                     <div className='form-group'>
                         <label htmlFor='name'>Genêro </label>
                         <select className='form-control' onChange={onChangeGenre} value={genreId}>
-                           {genres.map(genre =>  <option key={genre.id}
+                            <option>-</option>
+                            {genres.map(genre =>  <option key={genre.id}
                            value={genre.id}>{genre.name}</option>)}
                         </select>
                     </div>
@@ -181,7 +187,7 @@ if (sucess){
 
                     
                 <button type='button' onClick={save} className='btn btn-primary'>Salvar</button>
-                </form>
+                </form>               
 
             </div>
         }
