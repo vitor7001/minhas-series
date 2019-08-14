@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Alert } from 'reactstrap';
+
 const Series = () =>{
     const [data, setData] = useState([])
   
@@ -32,16 +34,33 @@ const deleteSerie = id =>{
         )
     }
 
+const [visible, setVisible] = useState(true)
+const onDismiss = () =>{
+    setVisible(false)
+}
+
+const alerta = (
+    <Alert color="info" isOpen={visible} toggle={onDismiss}>
+        <p>Aqui temos todos as séries já cadastradas</p> 
+    </Alert>
+)
+    
+const alertaNenhum = (
+    <Alert color="warning" isOpen={visible} toggle={onDismiss}>
+        <p>Seja o primeiro a cadastrar uma série!</p> 
+    </Alert>
+)
+
 
 if(data.length === 0 ){
     return(
         <div className='container'>
             <h1>Séries</h1>
-
-            <div className='alert  alert-warning' role='alert'>
+            <div>{alertaNenhum}</div>
+            <div className='alert  alert-danger' role='alert'>
                     Você não possui Séries criadas!
             </div>
-            <Link to='/series/novo'  className='btn btn-primary'> Nova Série </Link>
+            <Link to='/series/novo'  className='btn btn-danger'> Nova Série URGENTE! </Link>
         </div>
     )
 }
@@ -49,7 +68,8 @@ if(data.length === 0 ){
     return (
         <div className='container'>
                 <h1> Séries </h1>
-                    <Link to='/series/novo'  className='btn btn-primary'> Nova Série </Link>
+                <div>{alerta}</div>
+                <Link to='/series/novo'  className='btn btn-primary'> Nova Série </Link>
                 <table className='table  table-dark'>
                     <thead>
                         <tr>

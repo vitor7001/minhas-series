@@ -46,11 +46,11 @@ const alerta = (
     </Alert>
     )
 
-    const alertaNenhum = (
-        <Alert color="warning" isOpen={visible} toggle={onDismiss}>
-           <p>Seja o primeiro a cadastrar um genêro!</p> 
-        </Alert>
-        )
+ const alertaNenhum = (
+    <Alert color="warning" isOpen={visible} toggle={onDismiss}>
+        <p>Seja o primeiro a cadastrar um genêro!</p> 
+    </Alert>
+ )
 
 
 if(data.length === 0 ){
@@ -61,7 +61,7 @@ if(data.length === 0 ){
             <div className='alert  alert-danger' role='alert'>
                     Não possuimos Genêros cadastrados!
             </div>
-            <Link to='/generos/novo'  className='btn btn-danger'> Novo Genêro urgente! </Link>
+            <Link to='/generos/novo'  className='btn btn-danger'> Novo Genêro URGENTE! </Link>
         </div>
 )}
     return (
