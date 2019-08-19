@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
-const EditarGenero = ({match}) => {
+function EditarGenero ({match}) {
 const [name, setName] = useState('')
 const [sucess, setSucess] = useState(false)
 const [nomeAtual, setNomeAtual] = useState('')

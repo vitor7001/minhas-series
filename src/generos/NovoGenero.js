@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
-const NovoGenero = () => {
+function NovoGenero () {
 const [name, setName] = useState('')
 const [sucess, setSucess] = useState(false)
 const onChange = evt =>{

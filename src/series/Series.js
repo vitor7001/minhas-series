@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Alert } from 'reactstrap';
 
-const Series = () =>{
+function Series() {
     const [data, setData] = useState([])
   
     useEffect(() => {

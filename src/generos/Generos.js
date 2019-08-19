@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Alert } from 'reactstrap';
 
-const Generos = () =>{
+function Generos() {
     const [data, setData] = useState([])
   
     useEffect(() => {

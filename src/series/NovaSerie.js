@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
 
-const NovaSerie = () => {
+function NovaSerie() {
 const [name, setName] = useState('')
 const [comments, setComments] = useState('')
 const [sucess, setSucess] = useState(false)

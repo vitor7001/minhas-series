@@ -1,14 +1,12 @@
 import React from 'react';
-import Header from './Header';
+import Header from './componentes/Header';
 import Generos from './generos/Generos';
 import NovoGenero from './generos/NovoGenero';
 import EditarGenero from './generos/EditarGenero';
 import Series from './series/Series';
 import NovaSerie from './series/NovaSerie';
 import InfoSerie from './series/InfoSerie';
-
-//{/*, Container, Button */}Para o Jumbotron
-import  Painel from './Painel';
+import  Painel from './componentes/Painel';
 
 import {
   BrowserRouter as Router,
