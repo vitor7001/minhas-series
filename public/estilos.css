@@ -1,0 +1,12 @@
+.navbar .container .navbar-brand {
+    color: rgb(35, 35, 35) !important;
+    font-size: 30px;
+    margin: 6px 0;
+}
+
+.opc{
+    color: #007bff !important;
+    font-size: 20px;
+    margin: 4px 0;
+    
+}
