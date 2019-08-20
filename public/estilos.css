@@ -10,3 +10,7 @@
     margin: 4px 0;
     
 }
+
+body{
+    background: linear-gradient(to right, rgb(76, 161, 175), rgb(196, 224, 229));
+}

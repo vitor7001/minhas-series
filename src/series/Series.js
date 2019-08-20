@@ -23,11 +23,11 @@ const deleteSerie = id =>{
     
     const renderizaLinha = record =>{
         return(
-        <tr key={record.id}>
+        <tr key={record.id} align='center'>
             <th scope='row'>{record.id}</th>
                 <td>{record.name}</td>
                 <td>
-                    <Link className='btn btn-info' to={'/series/' + record.id}>Info</Link>
+                    <Link className='btn btn-success' to={'/series/' + record.id}>Info</Link>
                     <button className='btn btn-danger' onClick={() => deleteSerie(record.id)}> Remover </button>
                  </td>
         </tr>
@@ -67,12 +67,12 @@ if(data.length === 0 ){
 
     return (
         <div className='container'>
-                <h1> Séries </h1>
+                <h1 align='center'> Séries </h1>
                 <div>{alerta}</div>
                 <Link to='/series/novo'  className='btn btn-primary'> Nova Série </Link>
                 <table className='table  table-dark'>
                     <thead>
-                        <tr>
+                        <tr align='center'>
                             <th scope='col'>Id</th>
                             <th scope='col'>Nome</th>
                             <th scope='col'>Ações</th>

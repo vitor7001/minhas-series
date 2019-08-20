@@ -23,7 +23,7 @@ const deleteGenero = id =>{
     
 const renderizaLinha = record =>{
         return(
-        <tr key={record.id}>
+        <tr key={record.id} align='center'>
             <th scope='row'>{record.id}</th>
                 <td>{record.name}</td>
                 <td>
@@ -67,12 +67,12 @@ if(data.length === 0 ){
     return (
         <div className='container'>
             
-                <h1> Genêros </h1>
+                <h1 align='center'> Genêros </h1>
                 <div>{alerta}</div>
                 <Link to='/generos/novo'  className='btn btn-primary'> Novo Genêro </Link>
                 <table className='table  table-dark'>
                     <thead>
-                        <tr>
+                        <tr align='center'>
                             <th scope='col'>Id</th>
                             <th scope='col'>Nome</th>
                             <th scope='col'>Ações</th>

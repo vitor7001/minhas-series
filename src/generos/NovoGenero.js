@@ -18,6 +18,24 @@ const save = () =>{
         })
 }
 
+
+const validar = () =>{
+
+    try {
+        //validação para verificar se o campo não está vazio ou com espaços
+        if(name.trim() == ''){
+            throw new Error("Nome do genêro não pode estar vazio!");
+        }
+
+        save();
+
+    } catch (error) {
+        window.alert(error);
+    }
+
+}
+
+
 if (sucess)
     return <Redirect to='/generos' />
 
@@ -30,7 +48,7 @@ if (sucess)
                         <label htmlFor='name'>Nome </label>
                         <input type='text' value={name} onChange={onChange} className='form-control' id='name'  placeholder='Nome do genêro' />
                     </div>
-                    <button type='button' onClick={save} className='btn btn-primary'>Salvar</button>
+                    <button type='button' onClick={validar} className='btn btn-primary'>Salvar</button>
                 </form>
 
         </div>
