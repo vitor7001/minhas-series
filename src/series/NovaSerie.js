@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-import { InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
+import { InputGroup, InputGroupAddon, InputGroupText, Alert, Container, Row, Col } from 'reactstrap';
 
 function NovaSerie() {
     const [name, setName] = useState('')
@@ -11,6 +11,8 @@ function NovaSerie() {
 
     const [genres, setGenres] = useState([])
     const [genreId, setGenreId] = useState('')
+
+    const [nomeVazio, setNomeVazio] = useState(false)
 
 
     useEffect(() => {
@@ -50,6 +52,30 @@ function NovaSerie() {
     const seleciona = value => () => setStatus(value)
 
 
+    const validar = () => {
+        try {
+            if (name.trim() == '') {
+                throw new Error('')
+            }
+            setNomeVazio(false)
+            save()
+        } catch (error) {
+            setNomeVazio(true)
+        }
+    }
+
+    const nomeVazioAlert = (
+        <Container>
+            <Row>
+                <Col xs='auto'>
+                    <Alert color="warning" sm={{ size: 'auto', offset: 1 }}>
+                        <p>Informe um nome para ser inserido!</p>
+                    </Alert>
+                </Col>
+            </Row>
+        </Container>
+    )
+
 
     if (sucess) {
         return <Redirect to='/series' />
@@ -67,6 +93,10 @@ function NovaSerie() {
                         <input type='text' value={name} onChange={onChangeName}
                             className='form-control' id='name' placeholder='Nome da série' />
                     </InputGroup>
+
+                    {nomeVazio == true &&
+                        <div>{nomeVazioAlert}</div>
+                    }
 
                 </div>
 
@@ -113,7 +143,7 @@ function NovaSerie() {
                 </div>
 
 
-                <button type='button' onClick={save} className='btn btn-primary'>Salvar</button>
+                <button type='button' onClick={validar} className='btn btn-primary'>Salvar</button>
             </form>
 
         </div>

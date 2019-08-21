@@ -24,7 +24,7 @@ function NovoGenero() {
         try {
             //validação para verificar se o campo não está vazio ou com espaços
             if (name.trim() == '') {
-                throw new Error("Nome do genêro não pode estar vazio!")
+                throw new Error('')
             }
             setNomeVazio(false)
             save()
