@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Redirect } from 'react-router-dom';
-import { Badge } from 'reactstrap';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { Redirect } from 'react-router-dom'
+import { Badge } from 'reactstrap'
 
 function InfoSerie({ match }) {
     const [form, setForm] = useState({
@@ -199,4 +199,4 @@ function InfoSerie({ match }) {
     )
 }
 
-export default InfoSerie;
+export default InfoSerie

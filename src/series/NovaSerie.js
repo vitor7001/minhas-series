@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Redirect } from 'react-router-dom';
-import { InputGroup, InputGroupAddon, InputGroupText, Alert, Container, Row, Col } from 'reactstrap';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { Redirect } from 'react-router-dom'
+import { InputGroup, InputGroupAddon, InputGroupText, Alert, Container, Row, Col } from 'reactstrap'
 
 function NovaSerie() {
     const [name, setName] = useState('')
@@ -54,6 +54,7 @@ function NovaSerie() {
 
     const validar = () => {
         try {
+            //validação para verificar se o campo não está vazio ou com espaços
             if (name.trim() == '') {
                 throw new Error('')
             }
@@ -95,7 +96,10 @@ function NovaSerie() {
                     </InputGroup>
 
                     {nomeVazio == true &&
-                        <div>{nomeVazioAlert}</div>
+                        <div>
+                            <br />
+                            {nomeVazioAlert}
+                        </div>
                     }
 
                 </div>
@@ -142,7 +146,7 @@ function NovaSerie() {
                         </label>
                 </div>
 
-
+                <br />
                 <button type='button' onClick={validar} className='btn btn-primary'>Salvar</button>
             </form>
 
@@ -150,4 +154,4 @@ function NovaSerie() {
     )
 }
 
-export default NovaSerie;
+export default NovaSerie

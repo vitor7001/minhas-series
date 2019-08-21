@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { Alert } from 'reactstrap';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+import { Alert } from 'reactstrap'
 
 function Series() {
     const [data, setData] = useState([])
@@ -88,4 +88,4 @@ if(data.length === 0 ){
     )
   }
 
-  export default Series;
+  export default Series

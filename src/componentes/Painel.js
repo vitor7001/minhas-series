@@ -1,5 +1,5 @@
-import React from 'react';
-import { Jumbotron} from 'reactstrap';
+import React from 'react'
+import { Jumbotron} from 'reactstrap'
 
 function Painel() {
     return(
@@ -23,4 +23,4 @@ function Painel() {
 )
 }
 
-export default Painel;
+export default Painel

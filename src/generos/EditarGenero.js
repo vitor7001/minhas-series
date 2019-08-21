@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 
 function EditarGenero ({match}) {
 const [name, setName] = useState('')
@@ -48,4 +48,4 @@ if (sucess)
     )
 }
 
-export default  EditarGenero;
+export default  EditarGenero

@@ -7,12 +7,12 @@ import {
   NavItem,
   NavLink,
   NavbarToggler
-}  from 'reactstrap';
+}  from 'reactstrap'
 
 
 import {
   Link
-}  from 'react-router-dom';
+}  from 'react-router-dom'
 
 function Header(){
   const [open, setOpen] = useState(false)

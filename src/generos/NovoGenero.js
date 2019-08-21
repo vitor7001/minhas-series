@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
-import { Alert, Container, Row, Col } from 'reactstrap'
+import { InputGroup, InputGroupAddon, Alert, Container, Row, Col } from 'reactstrap'
 
 function NovoGenero() {
     const [name, setName] = useState('')
@@ -29,12 +29,11 @@ function NovoGenero() {
             setNomeVazio(false)
             save()
         } catch (error) {
-            //window.alert(error)
             setNomeVazio(true)
         }
     }
     const [nomeVazio, setNomeVazio] = useState(false)
-    const nomeVazioAlert = (
+    const nomeVazioAlert =  (
         <Container>
             <Row>
                 <Col xs='auto'>
@@ -52,18 +51,24 @@ function NovoGenero() {
     return (
         <div className='container'>
             <h1>Novo Genêro</h1>
-
             <form>
                 <div className='form-group'>
                     <label htmlFor='name'>Nome </label>
-                    <input type='text' value={name} onChange={onChange} className='form-control' id='name' placeholder='Nome do genêro' />
+                    <InputGroup>
+                        <InputGroupAddon addonType='prepend'>Informe um existente</InputGroupAddon>
+                        <input type='text' value={name} onChange={onChange}
+                            className='form-control' id='name'
+                            placeholder='Nome do genêro' />
+                    </InputGroup>
                 </div>
 
-
                 {nomeVazio == true &&
-                    <div>{nomeVazioAlert}</div>
+                    <div>
+                        <br />
+                        {nomeVazioAlert}
+                    </div>
                 }
-
+                <br />
                 <button type='button' onClick={validar} className='btn btn-primary'>Salvar</button>
             </form>
 

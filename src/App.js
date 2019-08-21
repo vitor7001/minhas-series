@@ -1,18 +1,18 @@
-import React from 'react';
-import Header from './componentes/Header';
-import Generos from './generos/Generos';
-import NovoGenero from './generos/NovoGenero';
-import EditarGenero from './generos/EditarGenero';
-import Series from './series/Series';
-import NovaSerie from './series/NovaSerie';
-import InfoSerie from './series/InfoSerie';
-import  Painel from './componentes/Painel';
+import React from 'react'
+import Header from './componentes/Header'
+import Generos from './generos/Generos'
+import NovoGenero from './generos/NovoGenero'
+import EditarGenero from './generos/EditarGenero'
+import Series from './series/Series'
+import NovaSerie from './series/NovaSerie'
+import InfoSerie from './series/InfoSerie'
+import  Painel from './componentes/Painel'
 
 import {
   BrowserRouter as Router,
   Route,
   Switch
-}  from 'react-router-dom';
+}  from 'react-router-dom'
 
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
        </Switch>
     </div>
   </Router>
-  );
+  )
 }
 
-export default App;
+export default App
