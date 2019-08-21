@@ -27,7 +27,7 @@ const deleteSerie = id =>{
             <th scope='row'>{record.id}</th>
                 <td>{record.name}</td>
                 <td>
-                    <Link className='btn btn-success' to={'/series/' + record.id}>Info</Link>
+                    <Link className='btn btn-primary' to={'/series/' + record.id}>Info</Link>
                     <button className='btn btn-danger' onClick={() => deleteSerie(record.id)}> Remover </button>
                  </td>
         </tr>
