@@ -23,7 +23,7 @@ function NovoGenero() {
     const validar = () => {
         try {
             //validação para verificar se o campo não está vazio ou com espaços
-            if (name.trim() == '') {
+            if (name.trim() === '') {
                 throw new Error('')
             }
             setNomeVazio(false)
@@ -62,7 +62,7 @@ function NovoGenero() {
                     </InputGroup>
                 </div>
 
-                {nomeVazio == true &&
+                {nomeVazio === true &&
                     <div>
                         <br />
                         {nomeVazioAlert}

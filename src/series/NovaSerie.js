@@ -55,7 +55,7 @@ function NovaSerie() {
     const validar = () => {
         try {
             //validação para verificar se o campo não está vazio ou com espaços
-            if (name.trim() == '') {
+            if (name.trim() === '') {
                 throw new Error('')
             }
             setNomeVazio(false)
@@ -95,7 +95,7 @@ function NovaSerie() {
                             className='form-control' id='name' placeholder='Nome da série' />
                     </InputGroup>
 
-                    {nomeVazio == true &&
+                    {nomeVazio === true &&
                         <div>
                             <br />
                             {nomeVazioAlert}
