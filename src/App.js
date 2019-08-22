@@ -7,6 +7,7 @@ import Series from './series/Series'
 import NovaSerie from './series/NovaSerie'
 import InfoSerie from './series/InfoSerie'
 import  Painel from './componentes/Painel'
+import Sobre from './componentes/Sobre'
 
 import {
   BrowserRouter as Router,
@@ -30,6 +31,7 @@ function App() {
           <Route path='/series' exact component={Series} />
           <Route path='/series/novo' exact component={NovaSerie} />
           <Route path='/series/:id' exact component={InfoSerie} />
+          <Route path='/sobre' exact component={Sobre} />
 
        </Switch>
     </div>

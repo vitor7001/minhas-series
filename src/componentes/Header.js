@@ -38,6 +38,11 @@ return (
                           Genêros
                         </NavLink>
                       </NavItem>
+                      <NavItem>
+                        <NavLink tag={Link} to='/sobre' className='opc'>
+                          Sobre
+                        </NavLink>
+                      </NavItem>
                    </Nav>
                 </Collapse>
         </div>
